@@ -1,0 +1,27 @@
+{
+    "version": "1.18",
+    "name": "libiconv",
+    "url": "https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.18.tar.gz",
+    "build_steps": [
+        "./configure --prefix={{TRAIL_STORE}}/{{NAME_AND_VERSION}} --enable-static --enable-shared",
+        "make -j{{N_CPUS}}",
+        "make install"
+    ],
+    "out_dir": "bin",
+    "export_bin": {
+        "dir":"bin",
+        "bins":["iconv"]
+    },
+    "dependencies": [
+        {
+            "name": "gcc",
+            "version_or_higher": "4.0.0",
+            "host":true
+        },
+        {
+            "name": "make",
+            "version_or_higher": "3.80.0",
+            "host":true
+        }
+    ]
+}

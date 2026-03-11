@@ -1,0 +1,33 @@
+{
+    "version": "2.3.8",
+    "name": "libidn2",
+    "url": "https://ftpmirror.gnu.org/libidn/libidn2-2.3.8.tar.gz",
+    "build_steps": [
+        "LDFLAGS=-L{{TRAIL_STORE}}/libunistring-{{DEP_VERSION:libunistring}}/lib CPPFLAGS=-I{{TRAIL_STORE}}/libunistring-{{DEP_VERSION:libunistring}}/include ./configure --prefix={{TRAIL_STORE}}/{{NAME_AND_VERSION}} --disable-static",
+        "make",
+        "make install"
+    ],
+
+    "export_bins": {
+        "dir":"bin",
+        "bins":["idn2"]
+    },
+
+    "dependencies": [
+        {
+            "name": "gcc",
+            "version_or_higher": "4.0.0",
+            "host": true
+        },
+        {
+            "name": "make",
+            "version_or_higher": "3.80.0",
+            "host": true
+        },
+        {
+            "name": "libunistring",
+            "version_or_higher": "0.9.7",
+            "host": false
+        }
+    ]
+}

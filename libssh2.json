@@ -1,0 +1,33 @@
+{
+    "version": "1.11.1",
+    "name": "libssh2",
+    "url": "https://libssh2.org/download/libssh2-1.11.1.tar.gz",
+    "build_steps": [
+        "./configure --prefix={{TRAIL_STORE}}/{{NAME_AND_VERSION}}  --with-libssl-prefix={{TRAIL_STORE}}/openssl-{{DEP_VERSION:openssl}} --with-libz-prefix={{TRAIL_STORE}}/zlib-{{DEP_VERSION:zlib}}",
+        "make",
+        "make install"
+    ],
+    "export_bins": {},
+    "dependencies": [
+        {
+            "name": "gcc",
+            "version_or_higher": "4.0.0",
+            "host":true
+        },
+        {
+            "name": "make",
+            "version_or_higher": "3.80.0",
+            "host":true
+        },
+        {
+            "name": "openssl",
+            "version_or_higher": "1.1.0",
+            "host":false
+        },
+        {
+            "name": "zlib",
+            "version_or_higher": "1.2.0",
+            "host":false
+        }
+    ]
+}

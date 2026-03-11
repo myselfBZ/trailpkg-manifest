@@ -1,0 +1,29 @@
+{
+    "version": "10.45",
+    "name": "pcre2",
+    "url": "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.45/pcre2-10.45.tar.gz",
+    "build_steps": [
+        "./configure --prefix={{TRAIL_STORE}}/{{NAME_AND_VERSION}} --enable-unicode --enable-jit --enable-pcre2-16 --enable-pcre2-32",
+        "make -j{{N_CPUS}}",
+        "make install"
+    ],
+    "out_dir": "bin",
+    "export_bin": {
+        "bins":[
+            "pcre2-config",
+            "pcre2grep",
+            "pcre2test"
+        ]},
+    "dependencies": [
+        {
+            "name": "gcc",
+            "version_or_higher": "4.8.0",
+            "host": true
+        },
+        {
+            "name": "make",
+            "version_or_higher": "3.81",
+            "host": true
+        }
+    ]
+}

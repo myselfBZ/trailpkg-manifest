@@ -1,0 +1,19 @@
+{
+    "version": "2.12.0",
+    "name": "libxml2",
+    "url": "https://download.gnome.org/sources/libxml2/2.12/libxml2-2.12.0.tar.xz",
+    "build_steps": [
+        "./configure --prefix={{TRAIL_STORE}}/{{NAME_AND_VERSION}} --with-zlib={{TRAIL_STORE}}/zlib-{{DEP_VERSION:zlib}} --with-iconv={{TRAIL_STORE}}/libiconv-{{DEP_VERSION:libiconv}} --without-python --disable-static",
+        "make -j{{N_CPUS}}",
+        "make install"
+    ],
+    "out_dir": "lib",
+    "export_bin": {
+        "dir":"bin",
+        "bins":["xmllint", "xmlcatalog", "xml2-config"]
+    },
+    "dependencies": [
+        { "name": "zlib", "version_or_higher": "1.2.3", "host": false },
+        { "name": "libiconv", "version_or_higher": "1.11", "host": false }
+    ]
+}

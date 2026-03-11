@@ -1,0 +1,19 @@
+{
+    "version": "4.33",
+    "name": "libev",
+    "url": "http://dist.schmorp.de/libev/libev-4.33.tar.gz",
+    "build_steps": [
+        "./configure --prefix={{TRAIL_STORE}}/{{NAME_AND_VERSION}} --disable-static",
+        "make -j{{N_CPUS}}",
+        "make install"
+    ],
+    "out_dir": "lib",
+    "export_bin": {},
+    "dependencies": [
+        {
+            "name": "gcc",
+            "version_or_higher": "3.4.6",
+            "host": true
+        }
+    ]
+}

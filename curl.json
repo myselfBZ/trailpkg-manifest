@@ -1,0 +1,51 @@
+{
+    "version": "8.12.0",
+    "name": "curl",
+    "url": "https://curl.se/download/curl-8.12.0.tar.gz",
+    "build_steps": [
+        "LDFLAGS=-L{{TRAIL_STORE}}/libidn2-{{DEP_VERSION:libidn2}}/lib CPPFLAGS=-I{{TRAIL_STORE}}/libidn2-{{DEP_VERSION:libidn2}}/include ./configure --prefix={{TRAIL_STORE}}/{{NAME_AND_VERSION}} --with-openssl={{TRAIL_STORE}}/openssl-{{DEP_VERSION:openssl}} --with-zlib={{TRAIL_STORE}}/zlib-{{DEP_VERSION:zlib}} --with-libssh2={{TRAIL_STORE}}/libssh2-{{DEP_VERSION:libssh2}} --with-libidn2 --with-nghttp2={{TRAIL_STORE}}/nghttp2-{{DEP_VERSION:nghttp2}} --without-libpsl",
+        "make -j{{N_CPUS}}",
+        "make install"
+    ],
+    "export_bin": {
+        "dir":"bin",
+        "bins":["curl"]
+    },
+    "dependencies": [
+        {
+            "name": "gcc",
+            "version_or_higher": "4.0.0",
+            "host": true
+        },
+        {
+            "name": "make",
+            "version_or_higher": "3.80.0",
+            "host": true
+        },
+        {
+            "name": "openssl",
+            "version_or_higher": "3.0.0",
+            "host": false
+        },
+        {
+            "name": "zlib",
+            "version_or_higher": "1.2.0",
+            "host": false
+        },
+        {
+            "name": "libssh2",
+            "version_or_higher": "1.11.0",
+            "host": false
+        },
+        {
+            "name": "libidn2",
+            "version_or_higher": "2.3.0",
+            "host": false
+        },
+        {
+            "name": "nghttp2",
+            "version_or_higher": "1.60.0",
+            "host": false
+        }
+    ]
+}

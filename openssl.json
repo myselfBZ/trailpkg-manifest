@@ -1,0 +1,16 @@
+{
+    "version": "3.2.0",
+    "name": "openssl",
+    "url": "https://www.openssl.org/source/openssl-3.2.0.tar.gz",
+    "build_steps": [
+        "./Configure --prefix={{TRAIL_STORE}}/{{NAME_AND_VERSION}} --openssldir={{TRAIL_ETC}}/{{NAME_AND_VERSION}}",
+        "make -j{{N_CPUS}}",
+        "make install_sw"
+    ],
+    "out_dir": "bin",
+    "export_bin":{
+        "dir":"bin",
+        "bins":["c_rehash", "openssl"]
+    },
+    "dependencies": []
+}

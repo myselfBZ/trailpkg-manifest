@@ -1,0 +1,37 @@
+{
+    "version": "1.64.0",
+    "name": "nghttp2",
+    "url": "https://github.com/nghttp2/nghttp2/releases/download/v1.68.0/nghttp2-1.68.0.tar.gz",
+    "build_steps": [
+        "./configure --prefix={{TRAIL_STORE}}/{{NAME_AND_VERSION}} --with-openssl={{TRAIL_STORE}}/openssl-{{DEP_VERSION:openssl}} --with-zlib={{TRAIL_STORE}}/zlib-{{DEP_VERSION:zlib}} --disable-examples --disable-app",
+        "make -j{{N_CPUS}}",
+        "make install"
+    ],
+    "out_dir": "lib",
+    "export_bin": {
+        "dir":"bin",
+        "bins":["nghttp", "nghttpd", "nghttpx", "h2load"]
+    },
+    "dependencies": [
+        {
+            "name": "openssl",
+            "version_or_higher": "1.1.1",
+            "host": false
+        },
+        {
+            "name": "zlib",
+            "version_or_higher": "1.2.3",
+            "host": false
+        },
+        {
+            "name": "gcc",
+            "version_or_higher": "4.8.1",
+            "host": true
+        },
+        {
+            "name": "make",
+            "version_or_higher": "3.81",
+            "host": true
+        }
+    ]
+}
